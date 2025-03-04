@@ -107,4 +107,5 @@ streamlit run app.py
 ### Before Git Commit
 ```bash
 pip freeze > requirements.txt
+git -c http.sslVerify=false push origin main
 ```
