@@ -92,6 +92,13 @@ mkdir "data"
 mkdir "tests"
 ```
 
+### Clone Project
+```bash
+git -c http.sslVerify=false clone https://github.com/safem0de/streamlit_capstone.git
+cd streamlit
+python -m venv .
+```
+
 ### Run Project
 ```bash
 streamlit run app.py

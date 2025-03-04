@@ -1,5 +1,6 @@
+import folium
 import streamlit as st
-from services.data_loader import load_user_data
+from streamlit_folium import folium_static
 
 # ตั้งค่าเริ่มต้นของแอป (รวมถึง Title และ Favicon)
 st.set_page_config(
@@ -8,7 +9,6 @@ st.set_page_config(
     layout="wide"
 )
 
-# ซ่อน Sidebar Navigation (ที่มี "app", "page1" โดยอัตโนมัติ)
 st.markdown("""
     <style>
         section[data-testid="stSidebarNav"] {display: none;},
@@ -19,9 +19,13 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# เปลี่ยนชื่อ App เป็น Homepage
-st.title("🏠 Homepage - Streamlit Clean Architecture 🚀")
+# สร้างแผนที่
+map_center = [13.7563, 100.5018]
+m = folium.Map(location=map_center, zoom_start=6)
 
-# โหลดข้อมูล
-users = load_user_data()
-st.write(users)
+# เพิ่ม marker
+folium.Marker([13.7563, 100.5018], popup="Bangkok AQI: 75", icon=folium.Icon(color="red")).add_to(m)
+
+# แสดงแผนที่ใน Streamlit
+st.title("Air Quality Map")
+folium_static(m)
