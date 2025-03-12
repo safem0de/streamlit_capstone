@@ -92,6 +92,13 @@ mkdir "data"
 mkdir "tests"
 ```
 
+### Clone Project
+```bash
+git -c http.sslVerify=false clone https://github.com/safem0de/streamlit_capstone.git
+cd streamlit
+python -m venv .
+```
+
 ### Run Project
 ```bash
 streamlit run app.py
@@ -100,15 +107,5 @@ streamlit run app.py
 ### Before Git Commit
 ```bash
 pip freeze > requirements.txt
+git -c http.sslVerify=false push origin main
 ```
-
-nerdctl build -t streamlit-app:latest .
-nerdctl tag streamlit-app:latest k8s.io/streamlit-app:latest
-
-kubectl apply -f deployment.yaml
-kubectl apply -f service.yaml
-
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
-
-kubectl apply -f ingress.yaml
-
