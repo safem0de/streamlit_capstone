@@ -101,3 +101,14 @@ streamlit run app.py
 ```bash
 pip freeze > requirements.txt
 ```
+
+nerdctl build -t streamlit-app:latest .
+nerdctl tag streamlit-app:latest k8s.io/streamlit-app:latest
+
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
+
+kubectl apply -f ingress.yaml
+
