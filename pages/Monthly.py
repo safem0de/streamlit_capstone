@@ -3,6 +3,13 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 import datetime
+from components.sidebar import hide_sidebar_nav, create_sidebar
+
+# ✅ ซ่อน Sidebar Navigation
+hide_sidebar_nav()
+
+# ✅ สร้าง Sidebar Menu
+create_sidebar()
 
 st.title("Select Month and Year")
 st.write("\n")  

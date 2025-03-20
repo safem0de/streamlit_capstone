@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from datetime import date
+from components.sidebar import hide_sidebar_nav, create_sidebar
 
 st.set_page_config(
     page_title="Daily AQI",
@@ -9,6 +10,12 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="collapsed" # "expanded", "collapsed", or "auto"
 )
+
+# ✅ ซ่อน Sidebar Navigation
+hide_sidebar_nav()
+
+# ✅ สร้าง Sidebar Menu
+create_sidebar()
 
 st.title("Dashboard AQI Daily 📊")
 

@@ -1,6 +1,7 @@
 import folium
 import streamlit as st
 from streamlit_folium import folium_static
+from components.sidebar import hide_sidebar_nav, create_sidebar
 
 # ตั้งค่าเริ่มต้นของแอป (รวมถึง Title และ Favicon)
 st.set_page_config(
@@ -10,15 +11,11 @@ st.set_page_config(
     initial_sidebar_state="expanded" # "expanded", "collapsed", or "auto"
 )
 
-st.markdown("""
-    <style>
-        section[data-testid="stSidebarNav"] {display: none;},
-        @font-face {
-            font-family: 'Source Sans Pro';
-            src: none;  /* ปิดการโหลดฟอนต์ */
-        }
-    </style>
-""", unsafe_allow_html=True)
+# ✅ ซ่อน Sidebar Menu ด้านบน
+hide_sidebar_nav()
+
+# ✅ สร้าง Sidebar Menu
+create_sidebar()
 
 # สร้างแผนที่
 map_center = [13.7563, 100.5018]
