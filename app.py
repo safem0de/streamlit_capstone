@@ -6,7 +6,8 @@ from streamlit_folium import folium_static
 st.set_page_config(
     page_title="Homepage",
     page_icon="🏠",
-    layout="wide"
+    layout="wide",
+    initial_sidebar_state="expanded" # "expanded", "collapsed", or "auto"
 )
 
 st.markdown("""

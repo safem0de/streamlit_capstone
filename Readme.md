@@ -96,7 +96,7 @@ mkdir "tests"
 ```bash
 git -c http.sslVerify=false clone https://github.com/safem0de/streamlit_capstone.git
 cd streamlit
-python -m venv .
+python -m venv venv
 ```
 
 ### Run Project
