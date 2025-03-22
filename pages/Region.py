@@ -1,3 +1,4 @@
+import platform
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -7,6 +8,7 @@ import plotly.graph_objects as go
 from sqlalchemy import create_engine
 from datetime import date
 from components.sidebar import hide_sidebar_nav, create_sidebar
+from utils.helpers import *
 
 st.set_page_config(
     page_title="Region",
@@ -33,7 +35,12 @@ create_sidebar()
 
 # # ดึงข้อมูลจาก Database
 # data = pd.read_sql("SELECT * FROM air_quality_raw", con=engine)
-data = pd.read_csv("backup_data\\air_quality_raw_202503202336.csv")
+
+if platform.system() == "Windows":
+    print("🪟 Running on Windows")
+    data = pd.read_csv("backup_data\\air_quality_raw_202503202336.csv")
+else:
+    data = pd.read_csv("backup_data/air_quality_raw_202503202336.csv")
 
 
 data.columns = data.columns.str.lower()  # แปลงชื่อคอลัมน์เป็นตัวพิมพ์เล็กทั้งหมด
@@ -54,7 +61,8 @@ else:
     filtered_data = data  # ใช้ข้อมูลทั้งหมด
 
 # ✅ แสดงค่าที่เลือก
-st.title(f"🌍 Air Quality Dashboard - {selected_region}")
+make_responsive(f"🌍 Air Quality Dashboard - {selected_region}",2.0)
+st.markdown("---")
 st.sidebar.write(f"🌍 Region: {selected_region}")
 
 # 📊 คำนวณค่าเฉลี่ยของตัวแปรที่ต้องการแสดง
@@ -95,22 +103,25 @@ delta_wind_speed = round((latest_wind_speed - previous_wind_speed),3)
 
 col1, col2, col3 = st.columns([1,1,1])
 with col1:
-    st.subheader("💨 ค่าเฉลี่ย AQI (US & CN)") #"normal" (ค่าเริ่มต้น) "inverse" (สลับสีเขียว-แดง) "off" (ปิดการแสดงผล)
+    make_responsive("💨 ค่าเฉลี่ย AQI (US & CN)")
+    # st.subheader("💨 ค่าเฉลี่ย AQI (US & CN)") 
+    #"normal" (ค่าเริ่มต้น) "inverse" (สลับสีเขียว-แดง) "off" (ปิดการแสดงผล)
     st.metric(label="AQI (US)", value=f"{average_aqius:.3f}", delta=int(delta_aqius), delta_color="inverse")
     st.metric(label="AQI (CN)", value=f"{average_aqicn:.3f}", delta=int(delta_aqicn), delta_color="inverse")
 
 with col2:
-    st.subheader("🌡️ ค่าเฉลี่ยสภาพอากาศ")
+    make_responsive("🌡️ ค่าเฉลี่ยสภาพอากาศ")
     st.metric(label="Temperature (°C)", value=f"{average_temp:.3f}", delta=int(delta_temperature), delta_color="inverse")
     st.metric(label="Pressure (hPa)", value=f"{average_pressure:.3f}", delta=int(delta_pressure), delta_color="normal")
 
 with col3:
-    st.subheader("💨 ค่าเฉลี่ยความชื้น/ความเร็วลม")
+    make_responsive("💨 ค่าเฉลี่ยความชื้น/ความเร็วลม")
     st.metric(label="Humidity (%)", value=f"{average_humidity:.3f}", delta=int(delta_humidity), delta_color="normal")
     st.metric(label="Wind Speed (m/s)", value=f"{average_wind_speed:.3f}", delta=int(delta_wind_speed), delta_color="normal")
 
+st.markdown("---")
 # ✅ กราฟเปรียบเทียบ AQI ระหว่างภูมิภาค (ด้านล่าง col3)
-st.subheader("📊 เปรียบเทียบ AQI ระหว่างภูมิภาค") 
+make_responsive("📊 เปรียบเทียบ AQI ระหว่างภูมิภาค") 
 
 # ✅ คำนวณค่าเฉลี่ย AQI ตาม Region
 region_aqi_data = round(filtered_data.groupby("region")["aqius"].mean(),3).reset_index()

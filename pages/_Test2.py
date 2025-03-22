@@ -1,3 +1,4 @@
+import platform
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -23,7 +24,11 @@ create_sidebar()
 
 # # ดึงข้อมูลจาก Database
 # data = pd.read_sql("SELECT * FROM air_quality_raw", con=engine)
-data = pd.read_csv("backup_data\\air_quality_raw_202503202336.csv")
+if platform.system() == "Windows":
+    print("🪟 Running on Windows")
+    data = pd.read_csv("backup_data\\air_quality_raw_202503202336.csv")
+else:
+    data = pd.read_csv("backup_data/air_quality_raw_202503202336.csv")
 
 data.columns = data.columns.str.lower()  # แปลงชื่อคอลัมน์เป็นตัวพิมพ์เล็กทั้งหมด
 data['timestamp'] = pd.to_datetime(data['timestamp'])

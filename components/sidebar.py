@@ -20,3 +20,5 @@ def create_sidebar():
     st.sidebar.page_link("pages/Region.py", label="Region")
     st.sidebar.page_link("pages/_Test.py", label="Test")
     st.sidebar.page_link("pages/_Test2.py", label="Test2")
+
+    st.sidebar.markdown("---")
