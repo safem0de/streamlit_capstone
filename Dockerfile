@@ -15,7 +15,8 @@ RUN apt-get update && apt-get install -y \
 USER appuser
 WORKDIR /home/appuser
 
-RUN git clone https://github.com/streamlit/streamlit-example.git app
+# RUN git clone https://github.com/streamlit/streamlit-example.git app
+RUN git clone https://github.com/safem0de/streamlit_capstone app
 
 ENV VIRTUAL_ENV=/home/appuser/venv
 RUN virtualenv ${VIRTUAL_ENV}
