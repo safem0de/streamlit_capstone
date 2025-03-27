@@ -25,4 +25,6 @@ RUN . ${VIRTUAL_ENV}/bin/activate && pip install -r app/requirements.txt
 EXPOSE 8501
 
 COPY run.sh /home/appuser
+RUN chmod +x /home/appuser/run.sh
+
 ENTRYPOINT ["./run.sh"]

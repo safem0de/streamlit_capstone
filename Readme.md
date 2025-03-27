@@ -117,7 +117,33 @@ git -c http.sslVerify=false push origin main
 
 ```bash
 nerdctl build -t 43.209.49.162:32000/streamlit:latest .
+nerdctl ps -a
 nerdctl push 43.209.49.162:32000/streamlit:latest
+```
+
+วิธีที่ถูกต้องคือ: ตั้งค่าใน config (daemon.json) ก่อน แล้ว push แบบปกติ
+📁 แก้ /etc/docker/daemon.json
+```bash
+sudo nano /etc/docker/daemon.json
+```
+
+```bash
+{
+  "insecure-registries": ["43.209.49.162:32000"]
+}
+```
+
+สร้างหรือแก้ /etc/rancher/k3s/registries.yaml
+```bash
+sudo mkdir -p /etc/rancher/k3s
+sudo nano /etc/rancher/k3s/registries.yaml
+```
+ใส่เนื้อหานี้:
+```bash
+mirrors:
+  "43.209.49.162:32000":
+    endpoint:
+      - "http://43.209.49.162:32000"
 ```
 
 ```bash
