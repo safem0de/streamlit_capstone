@@ -39,4 +39,7 @@ EXPOSE 8501
 # COPY run.sh /home/appuser
 # RUN chmod +x /home/appuser/run.sh
 
-ENTRYPOINT ["./run.sh"]
+# ENTRYPOINT ["./run.sh"]
+
+# <<< ใช้ absolute path >>>
+ENTRYPOINT ["/opt/run.sh"]
