@@ -16,7 +16,8 @@ spec:
     spec:
       containers:
         - name: streamlit
-          image: 127.0.0.1:32000/streamlit:latest  # ใช้ image ของตัวเอง
+          image: 43.209.49.162:32000/streamlit:latest  # ใช้ image ของตัวเอง
+          # image: 127.0.0.1:32000/streamlit:latest  # ใช้ image ของตัวเอง
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8501
