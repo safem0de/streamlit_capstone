@@ -28,7 +28,7 @@ USER appuser
 WORKDIR /home/appuser
 
 # RUN git clone https://github.com/streamlit/streamlit-example.git app
-RUN git clone https://github.com/safem0de/streamlit_capstone app
+RUN git clone https://github.com/safem0de/streamlit_capstone.git app
 
 ENV VIRTUAL_ENV=/home/appuser/venv
 RUN virtualenv ${VIRTUAL_ENV}
