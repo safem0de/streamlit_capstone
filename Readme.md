@@ -109,3 +109,22 @@ streamlit run app.py
 pip freeze > requirements.txt
 git -c http.sslVerify=false push origin main
 ```
+
+### Deployment
+1. build image using nerdctl
+2. push to registry
+3. create namespace and deploy
+
+```bash
+nerdctl build -t 43.209.49.162:32000/streamlit:latest .
+nerdctl push 43.209.49.162:32000/streamlit:latest
+```
+
+```bash
+curl -X GET http://43.209.49.162:32000/v2/_catalog
+```
+
+```bash
+kubectl create namespace streamlit
+kubectl apply -f ./ --namespace=streamlit
+```
