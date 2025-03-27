@@ -12,11 +12,17 @@ RUN apt-get update && apt-get install -y \
     software-properties-common \
     git
 
-# <<< COPY run.sh BEFORE switching to appuser >>>
 # “Permission trap” สุดคลาสสิกของ Docker
-COPY run.sh /home/appuser/run.sh
-RUN chmod +x /home/appuser/run.sh
-RUN chown -R 1000:1000 /home/appuser
+# COPY run.sh /home/appuser/run.sh
+# RUN chmod +x /home/appuser/run.sh
+# RUN chown -R 1000:1000 /home/appuser
+
+# <<< COPY ก่อนสลับ user >>>
+COPY run.sh /opt/run.sh
+RUN chmod +x /opt/run.sh
+
+# ให้ไฟล์ทั้งหมดเป็นของ appuser
+RUN chown -R 1000:1000 /opt
 
 USER appuser
 WORKDIR /home/appuser
