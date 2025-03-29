@@ -129,10 +129,15 @@ curl -X GET http://127.0.0.1:32000/v2/_catalog
 production
 ```bash
 nerdctl build -t 43.209.49.162:32000/streamlit:latest .
+nerdctl build --no-cache -t streamlit:latest .
+#
 nerdctl images
 nerdctl push --insecure-registry 43.209.49.162:32000/streamlit:latest
 curl -X GET http://43.209.49.162:32000/v2/_catalog
 ```
+Tag image ไปยัง local registry
+nerdctl tag <image> <private-registry>/<image>
+nerdctl tag streamlit:latest 127.0.0.1:32000/streamlit:latest
 
 วิธีที่ถูกต้องคือ: ตั้งค่าใน config (daemon.json) ก่อน แล้ว push แบบปกติ
 📁 แก้ /etc/docker/daemon.json
@@ -166,6 +171,11 @@ curl -X GET http://43.209.49.162:32000/v2/_catalog
 ```bash
 kubectl create namespace streamlit
 kubectl apply -f ./ --namespace=streamlit
+```
+
+### ลบทุกอย่าง
+```bash
+kubectl delete all --all -n streamlit
 ```
 
 ## inspect-registry
