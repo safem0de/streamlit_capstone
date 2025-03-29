@@ -119,11 +119,8 @@ git -c http.sslVerify=false push origin main
 
 localhost
 ```bash
-nerdctl build -t 127.0.0.1:32000/streamlit:latest .
-nerdctl images
-nerdctl tag streamlit:latest 127.0.0.1:32000/streamlit:latest
-nerdctl push 127.0.0.1:32000/streamlit:latest
-curl -X GET http://127.0.0.1:32000/v2/_catalog
+nerdctl build -t my-streamlit-app .
+nerdctl run -it --rm -p 8501:8501 my-streamlit-app
 ```
 
 production
@@ -177,7 +174,7 @@ kubectl apply -f ./ --namespace=streamlit
 ```bash
 kubectl delete all --all -n streamlit
 ```
-
+---
 ## inspect-registry
 executable
 ```bash
@@ -190,4 +187,31 @@ sudo apt install jq
 run
 ```bash
 ./inspect-registry.sh
+```
+---
+### docker without sudo วิธีทำบน Ubuntu / Debian
+สร้าง group docker (ถ้ายังไม่มี)
+```bash
+sudo groupadd docker
+```
+(ถ้ามีอยู่แล้วจะขึ้นว่า group มีอยู่แล้ว ไม่เป็นไร)
+
+เพิ่ม user ปัจจุบันเข้า group docker
+```bash
+sudo usermod -aG docker $USER
+```
+หรือระบุชื่อ user ตรง ๆ:
+```bash
+sudo usermod -aG docker ubuntu
+```
+รีโหลด session หรือ logout/login
+คุณต้อง ออกจาก shell แล้วเข้ากลับมาใหม่ หรือรันคำสั่งนี้:
+```bash
+newgrp docker
+```
+เพื่อโหลด group ใหม่แบบไม่ต้อง logout
+
+ทดสอบ
+```bash
+docker ps
 ```
