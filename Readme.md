@@ -117,10 +117,21 @@ git -c http.sslVerify=false push origin main
 2. push to registry
 3. create namespace and deploy
 
+localhost
+```bash
+nerdctl build -t 127.0.0.1:32000/streamlit:latest .
+nerdctl images
+nerdctl tag streamlit:latest 127.0.0.1:32000/streamlit:latest
+nerdctl push 127.0.0.1:32000/streamlit:latest
+curl -X GET http://127.0.0.1:32000/v2/_catalog
+```
+
+production
 ```bash
 nerdctl build -t 43.209.49.162:32000/streamlit:latest .
-nerdctl ps -a
-nerdctl push 43.209.49.162:32000/streamlit:latest
+nerdctl images
+nerdctl push --insecure-registry 43.209.49.162:32000/streamlit:latest
+curl -X GET http://43.209.49.162:32000/v2/_catalog
 ```
 
 วิธีที่ถูกต้องคือ: ตั้งค่าใน config (daemon.json) ก่อน แล้ว push แบบปกติ
@@ -155,4 +166,18 @@ curl -X GET http://43.209.49.162:32000/v2/_catalog
 ```bash
 kubectl create namespace streamlit
 kubectl apply -f ./ --namespace=streamlit
+```
+
+## inspect-registry
+executable
+```bash
+chmod +x inspect-registry.sh
+```
+ติดตั้ง jq
+```bash
+sudo apt install jq 
+```
+run
+```bash
+./inspect-registry.sh
 ```
