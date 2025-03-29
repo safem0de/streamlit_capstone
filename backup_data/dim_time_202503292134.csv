@@ -1,0 +1,17 @@
+"time_id","date","hour","day_of_week","month_name","quarter","week_of_year","is_weekend","is_holiday"
+2025032802,2025-03-28,2,Friday   ,March    ,1,13,false,false
+2025032015,2025-03-20,15,Thursday ,March    ,1,12,false,false
+2025032614,2025-03-26,14,Wednesday,March    ,1,13,false,false
+2025032804,2025-03-28,4,Friday   ,March    ,1,13,false,false
+2025032615,2025-03-26,15,Wednesday,March    ,1,13,false,false
+2025032612,2025-03-26,12,Wednesday,March    ,1,13,false,false
+2025032014,2025-03-20,14,Thursday ,March    ,1,12,false,false
+2025032610,2025-03-26,10,Wednesday,March    ,1,13,false,false
+2025032805,2025-03-28,5,Friday   ,March    ,1,13,false,false
+2025032011,2025-03-20,11,Thursday ,March    ,1,12,false,false
+2025032013,2025-03-20,13,Thursday ,March    ,1,12,false,false
+2025032609,2025-03-26,9,Wednesday,March    ,1,13,false,false
+2025032010,2025-03-20,10,Thursday ,March    ,1,12,false,false
+2025032803,2025-03-28,3,Friday   ,March    ,1,13,false,false
+2025032613,2025-03-26,13,Wednesday,March    ,1,13,false,false
+2025032012,2025-03-20,12,Thursday ,March    ,1,12,false,false

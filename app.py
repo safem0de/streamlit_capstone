@@ -1,9 +1,12 @@
 import folium
 import pandas as pd
 import platform
+from sqlalchemy import create_engine
 import streamlit as st
 from streamlit_folium import folium_static
 from components.sidebar import hide_sidebar_nav, create_sidebar
+from services.data_loader import connection_str, fetch_data
+from streamlit.components.v1 import html
 
 # ตั้งค่าเริ่มต้นของแอป (รวมถึง Title และ Favicon)
 st.set_page_config(
@@ -19,7 +22,12 @@ hide_sidebar_nav()
 # ✅ สร้าง Sidebar Menu
 create_sidebar()
 
-if platform.system() == "Windows":
+data = pd.DataFrame
+if connection_str("aqi_database")["status"] == "ok":
+    conn_str = str(connection_str("aqi_database")["data"])
+    print(conn_str)
+    data = fetch_data(conn_str, str("SELECT * FROM vw_air_quality_latest"))
+elif platform.system() == "Windows":
     print("Running on Windows")
     data = pd.read_csv("backup_data\\air_quality_raw_202503202336.csv")
 else:
@@ -27,8 +35,9 @@ else:
     data = pd.read_csv("backup_data/air_quality_raw_202503202336.csv")
 
 # สร้างแผนที่
-map_center = [13.7563, 100.5018]
-m = folium.Map(location=map_center, zoom_start=6)
+# map_center = [13.7563, 100.5018]
+map_center = [12.5, 100.5]
+m = folium.Map(location=map_center, zoom_start=6.1)
 
 data.columns = data.columns.str.lower()
 print(data.head())
@@ -70,5 +79,6 @@ for _, row in location_data.iterrows():
     ).add_to(m)
 
 # แสดงแผนที่ใน Streamlit
-st.title("Air Quality Map")
-folium_static(m)
+st.title("Air Quality Map ... By 67130503")
+# folium_static(m)
+html(m.get_root().render(), height=900)

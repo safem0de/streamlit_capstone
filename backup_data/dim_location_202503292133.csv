@@ -1,0 +1,304 @@
+"location_id","city","state","country","region"
+1,Ang Thong,Ang Thong,Thailand,Central
+2,Pa Mok,Ang Thong,Thailand,Central
+3,Sam Ko,Ang Thong,Thailand,Central
+4,Bang Bon,Bangkok,Thailand,Central
+5,Bang Kapi,Bangkok,Thailand,Central
+6,Bang Khae,Bangkok,Thailand,Central
+7,Bang Kho Laem,Bangkok,Thailand,Central
+8,Bang Khun Thian,Bangkok,Thailand,Central
+9,Bangkok,Bangkok,Thailand,Central
+10,Bangkok Yai,Bangkok,Thailand,Central
+11,Bang Na,Bangkok,Thailand,Central
+12,Bang Rak,Bangkok,Thailand,Central
+13,Bang Sue,Bangkok,Thailand,Central
+14,Chatuchak,Bangkok,Thailand,Central
+15,Chom Thong,Bangkok,Thailand,Central
+16,Din Daeng,Bangkok,Thailand,Central
+17,Don Mueang,Bangkok,Thailand,Central
+18,Huai Khwang,Bangkok,Thailand,Central
+19,Khan Na Yao,Bangkok,Thailand,Central
+20,Khlong Sam Wa,Bangkok,Thailand,Central
+21,Khlong San,Bangkok,Thailand,Central
+22,Lat Phrao,Bangkok,Thailand,Central
+23,Nong Khaem,Bangkok,Thailand,Central
+24,Pathum Wan,Bangkok,Thailand,Central
+25,Phaya Thai,Bangkok,Thailand,Central
+26,Phra Khanong,Bangkok,Thailand,Central
+27,Phra Nakhon,Bangkok,Thailand,Central
+28,Ratchathewi,Bangkok,Thailand,Central
+29,Sai Mai,Bangkok,Thailand,Central
+30,Samphanthawong,Bangkok,Thailand,Central
+31,Saphan Sung,Bangkok,Thailand,Central
+32,Sathon,Bangkok,Thailand,Central
+33,Taling Chan,Bangkok,Thailand,Central
+34,Thawi Watthana,Bangkok,Thailand,Central
+35,Thung Khru,Bangkok,Thailand,Central
+36,Wang Thonglang,Bangkok,Thailand,Central
+37,Watthana,Bangkok,Thailand,Central
+38,Chai Nat,Chai Nat,Thailand,Central
+39,Kamphaeng Phet,Kamphaeng Phet,Thailand,Central
+40,Lan Krabue,Kamphaeng Phet,Thailand,Central
+41,Ban Mi,Lopburi,Thailand,Central
+42,Lop Buri,Lopburi,Thailand,Central
+43,Tha Hin,Lopburi,Thailand,Central
+44,Nakhon Nayok,Nakhon Nayok,Thailand,Central
+45,Ongkharak,Nakhon Nayok,Thailand,Central
+46,Pak Phli,Nakhon Nayok,Thailand,Central
+47,Bang Krathuek,Nakhon Pathom,Thailand,Central
+48,Nakhon Chai Si,Nakhon Pathom,Thailand,Central
+49,Nakhon Pathom,Nakhon Pathom,Thailand,Central
+50,Salaya,Nakhon Pathom,Thailand,Central
+51,Sam Phran,Nakhon Pathom,Thailand,Central
+52,Nakhon Sawan,Nakhon Sawan,Thailand,Central
+53,Bang Kruai,Nonthaburi,Thailand,Central
+54,Bang Talat,Nonthaburi,Thailand,Central
+55,Bang Yai,Nonthaburi,Thailand,Central
+56,Ban Mai,Nonthaburi,Thailand,Central
+57,Khlong Phra Udom,Nonthaburi,Thailand,Central
+58,Mueang Nonthaburi,Nonthaburi,Thailand,Central
+59,Pakkret,Nonthaburi,Thailand,Central
+60,Sai Ma,Nonthaburi,Thailand,Central
+61,Talat Khwan,Nonthaburi,Thailand,Central
+62,Talat Kwan,Nonthaburi,Thailand,Central
+63,Ban Klang,Pathum Thani,Thailand,Central
+64,Bueng Kham Phroi,Pathum Thani,Thailand,Central
+65,Khlong Luang,Pathum Thani,Thailand,Central
+66,Khlong Nueng,Pathum Thani,Thailand,Central
+67,Lam Luk Ka,Pathum Thani,Thailand,Central
+68,Lat Sawai,Pathum Thani,Thailand,Central
+69,Nong Suea,Pathum Thani,Thailand,Central
+70,Pathum Thani,Pathum Thani,Thailand,Central
+71,Thanyaburi,Pathum Thani,Thailand,Central
+72,Khao Kho,Phetchabun,Thailand,Central
+73,Phetchabun,Phetchabun,Thailand,Central
+74,Tha Phon,Phetchabun,Thailand,Central
+75,Phichit,Phichit,Thailand,Central
+76,Phitsanulok,Phitsanulok,Thailand,Central
+77,Wang Thong,Phitsanulok,Thailand,Central
+78,Wat Chan,Phitsanulok,Thailand,Central
+79,Ayutthaya,Phra Nakhon Si Ayutthaya,Thailand,Central
+80,Ko Rian,Phra Nakhon Si Ayutthaya,Thailand,Central
+81,Lat Bua Luang,Phra Nakhon Si Ayutthaya,Thailand,Central
+82,Tha Wasukri,Phra Nakhon Si Ayutthaya,Thailand,Central
+83,Bang Bo District,Samut Prakan,Thailand,Central
+84,Bang Kaeo,Samut Prakan,Thailand,Central
+85,Bang Phli,Samut Prakan,Thailand,Central
+86,Bang Pla,Samut Prakan,Thailand,Central
+87,Bang Sao Thong,Samut Prakan,Thailand,Central
+88,Pak Nam,Samut Prakan,Thailand,Central
+89,Phra Pradaeng,Samut Prakan,Thailand,Central
+90,Racha Thewa,Samut Prakan,Thailand,Central
+91,Samut Prakan,Samut Prakan,Thailand,Central
+92,Song Khanong,Samut Prakan,Thailand,Central
+93,Bang Nam Chuet,Samut Sakhon,Thailand,Central
+94,Ban Phaeo,Samut Sakhon,Thailand,Central
+95,Om Noi,Samut Sakhon,Thailand,Central
+96,Samut Sakhon,Samut Sakhon,Thailand,Central
+97,Bang Phrom,Samut Songkhram,Thailand,Central
+98,Samut Songkhram,Samut Songkhram,Thailand,Central
+99,Chaloem Phra Kiat,Sara Buri,Thailand,Central
+100,Muak Lek,Sara Buri,Thailand,Central
+101,Saraburi,Sara Buri,Thailand,Central
+102,Sing Buri,Sing Buri,Thailand,Central
+103,Rua Yai,Suphan Buri,Thailand,Central
+104,Uthai Thani,Uthai Thani,Thailand,Central
+105,Bang Pakong,Chachoengsao,Thailand,East
+106,Ban Pho,Chachoengsao,Thailand,East
+107,Chachoengsao,Chachoengsao,Thailand,East
+108,Plaeng Yao,Chachoengsao,Thailand,East
+109,Chanthaburi,Chanthaburi,Thailand,East
+110,Ban Bueng,Chon Buri,Thailand,East
+111,Bang Lamung,Chon Buri,Thailand,East
+112,Ban Suan,Chon Buri,Thailand,East
+113,Ban Talat Bueng,Chon Buri,Thailand,East
+114,Chon Buri,Chon Buri,Thailand,East
+115,Pattaya City,Chon Buri,Thailand,East
+116,Pong,Chon Buri,Thailand,East
+117,Sattahip,Chon Buri,Thailand,East
+118,Si Racha,Chon Buri,Thailand,East
+119,Thung Sukhla,Chon Buri,Thailand,East
+120,Bang Krabao,Prachin Buri,Thailand,East
+121,Ban Phe,Rayong,Thailand,East
+122,Klaeng,Rayong,Thailand,East
+123,Maptaphut,Rayong,Thailand,East
+124,Nikhom Phattana,Rayong,Thailand,East
+125,Pluak Daeng,Rayong,Thailand,East
+126,Rayong,Rayong,Thailand,East
+127,Sam Nak Thon,Rayong,Thailand,East
+128,Tha Pradu,Rayong,Thailand,East
+129,Aranyaprathet,Sa Kaeo,Thailand,East
+130,Khlong Yai,Trat,Thailand,East
+131,Ko Chang Tai,Trat,Thailand,East
+132,Trat,Trat,Thailand,East
+133,Ban Pong,Chiang Mai,Thailand,North
+134,Ban Waen,Chiang Mai,Thailand,North
+135,Chang Klan,Chiang Mai,Thailand,North
+136,Chang Moi,Chiang Mai,Thailand,North
+137,Chang Phueak,Chiang Mai,Thailand,North
+138,Chiang Dao,Chiang Mai,Thailand,North
+139,Chiang Mai,Chiang Mai,Thailand,North
+140,Chom Thong,Chiang Mai,Thailand,North
+141,Doi Saket,Chiang Mai,Thailand,North
+142,Doi Tao,Chiang Mai,Thailand,North
+143,Fa Ham,Chiang Mai,Thailand,North
+144,Hang Dong,Chiang Mai,Thailand,North
+145,Hot,Chiang Mai,Thailand,North
+146,Mae Hia,Chiang Mai,Thailand,North
+147,Mae On,Chiang Mai,Thailand,North
+148,Mae Rim,Chiang Mai,Thailand,North
+149,Nam Phrae,Chiang Mai,Thailand,North
+150,Nong Chom,Chiang Mai,Thailand,North
+151,Phra Sing,Chiang Mai,Thailand,North
+152,San Kamphaeng,Chiang Mai,Thailand,North
+153,San Pa Tong,Chiang Mai,Thailand,North
+154,San Sai,Chiang Mai,Thailand,North
+155,Saraphi,Chiang Mai,Thailand,North
+156,Suthep,Chiang Mai,Thailand,North
+157,Talat Khwan,Chiang Mai,Thailand,North
+158,Tha Sala,Chiang Mai,Thailand,North
+159,Wat Ket,Chiang Mai,Thailand,North
+160,Chiang Khong,Chiang Rai,Thailand,North
+161,Chiang Rai,Chiang Rai,Thailand,North
+162,Doi Luang,Chiang Rai,Thailand,North
+163,Mae Chan,Chiang Rai,Thailand,North
+164,Mae Fa Luang,Chiang Rai,Thailand,North
+165,Mae Kon,Chiang Rai,Thailand,North
+166,Mae Sai,Chiang Rai,Thailand,North
+167,Nang Lae,Chiang Rai,Thailand,North
+168,Pong Pha,Chiang Rai,Thailand,North
+169,Rim Kok,Chiang Rai,Thailand,North
+170,Rop Wiang,Chiang Rai,Thailand,North
+171,Wiang,Chiang Rai,Thailand,North
+172,Wiang Chai,Chiang Rai,Thailand,North
+173,Wiang Phang Kham,Chiang Rai,Thailand,North
+174,Ban Dong,Lampang,Thailand,North
+175,Bo Haeo,Lampang,Thailand,North
+176,Ko Kha,Lampang,Thailand,North
+177,Lampang,Lampang,Thailand,North
+178,Mae Mo,Lampang,Thailand,North
+179,Pong Yang Khok,Lampang,Thailand,North
+180,Soem Ngam,Lampang,Thailand,North
+181,Ban Thi,Lamphun,Thailand,North
+182,Mueang,Lamphun,Thailand,North
+183,Pa Sak,Lamphun,Thailand,North
+184,Khun Yuam,Mae Hong Son,Thailand,North
+185,Mae Hi,Mae Hong Son,Thailand,North
+186,Pai,Mae Hong Son,Thailand,North
+187,Pang Mu,Mae Hong Son,Thailand,North
+188,Wiang Nuea,Mae Hong Son,Thailand,North
+189,Nai Wiang,Nan,Thailand,North
+190,Phaya Kaeo,Nan,Thailand,North
+191,Ban Tom,Phayao,Thailand,North
+192,Mae Ka,Phayao,Thailand,North
+193,Mueang,Phayao,Thailand,North
+194,Pong,Phayao,Thailand,North
+195,Phrae,Phrae,Thailand,North
+196,Pak Khwae,Sukhothai,Thailand,North
+197,Sawankhalok,Sukhothai,Thailand,North
+198,Sukhothai,Sukhothai,Thailand,North
+199,Yang Sai,Sukhothai,Thailand,North
+200,Mae Pa,Tak,Thailand,North
+201,Mae Sot,Tak,Thailand,North
+202,Phra That Pha Daeng,Tak,Thailand,North
+203,Tak,Tak,Thailand,North
+204,Tha Song Yang,Tak,Thailand,North
+205,Nam Rit,Uttaradit,Thailand,North
+206,Uttaradit,Uttaradit,Thailand,North
+207,Amnat Charoen,Amnat Charoen,Thailand,Northeast
+208,Buri Ram,Buriram,Thailand,Northeast
+209,Chamni,Buriram,Thailand,Northeast
+210,Lam Plai Mat,Buriram,Thailand,Northeast
+211,Nang Rong,Buriram,Thailand,Northeast
+212,Nong Ki,Buriram,Thailand,Northeast
+213,Chaiyaphum,Chaiyaphum,Thailand,Northeast
+214,Chatturat,Chaiyaphum,Thailand,Northeast
+215,Bueng Kan,Changwat Bueng Kan,Thailand,Northeast
+216,Si Wichian,Changwat Ubon Ratchathani,Thailand,Northeast
+217,Ubon Ratchathani,Changwat Ubon Ratchathani,Thailand,Northeast
+218,Kalasin,Kalasin,Thailand,Northeast
+219,Rong Kham,Kalasin,Thailand,Northeast
+220,Chum Phae,Khon Kaen,Thailand,Northeast
+221,Khon Kaen,Khon Kaen,Thailand,Northeast
+222,Kranuan,Khon Kaen,Thailand,Northeast
+223,Nam Phong,Khon Kaen,Thailand,Northeast
+224,Sam Sung,Khon Kaen,Thailand,Northeast
+225,Loei,Loei,Thailand,Northeast
+226,Borabue,Maha Sarakham,Thailand,Northeast
+227,Maha Sarakham,Maha Sarakham,Thailand,Northeast
+228,Phayakkhaphum Phisai,Maha Sarakham,Thailand,Northeast
+229,Mukdahan,Mukdahan,Thailand,Northeast
+230,Nikhom Kham Soi,Mukdahan,Thailand,Northeast
+231,Nakhon Phanom,Nakhon Phanom,Thailand,Northeast
+232,Bua Lai,Nakhon Ratchasima,Thailand,Northeast
+233,Mueang,Nakhon Ratchasima,Thailand,Northeast
+234,Mu Si,Nakhon Ratchasima,Thailand,Northeast
+235,Nai Mueang,Nakhon Ratchasima,Thailand,Northeast
+236,Nakhon Ratchasima,Nakhon Ratchasima,Thailand,Northeast
+237,Pak Chong,Nakhon Ratchasima,Thailand,Northeast
+238,Sikhio,Nakhon Ratchasima,Thailand,Northeast
+239,Nong Bua Lamphu,Nong Bua Lamphu,Thailand,Northeast
+240,Nong Khai,Nong Khai,Thailand,Northeast
+241,Roi Et,Roi Et,Thailand,Northeast
+242,Sakon Nakhon,Sakon Nakhon,Thailand,Northeast
+243,Sawang Daen Din,Sakon Nakhon,Thailand,Northeast
+244,Bueng Bun,Sisaket,Thailand,Northeast
+245,Kantharalak,Sisaket,Thailand,Northeast
+246,Si Sa Ket,Sisaket,Thailand,Northeast
+247,Chom Phra,Surin,Thailand,Northeast
+248,Prasat,Surin,Thailand,Northeast
+249,Si Khoraphum,Surin,Thailand,Northeast
+250,Surin,Surin,Thailand,Northeast
+251,Tha Tum,Surin,Thailand,Northeast
+252,Kut Sa,Udon Thani,Thailand,Northeast
+253,Nong Han,Udon Thani,Thailand,Northeast
+254,Udon Thani,Udon Thani,Thailand,Northeast
+255,Yasothon,Yasothon,Thailand,Northeast
+256,Ko Lanta Yai,Krabi,Thailand,South
+257,Krabi,Krabi,Thailand,South
+258,Nuea Khlong,Krabi,Thailand,South
+259,Saladan,Krabi,Thailand,South
+260,Khlang,Nakhon Si Thammarat,Thailand,South
+261,Tha Sala,Nakhon Si Thammarat,Thailand,South
+262,Narathiwat,Narathiwat,Thailand,South
+263,Ban Khao Lak,Phangnga,Thailand,South
+264,Bang Kaeo,Phatthalung,Thailand,South
+265,Ban Karon,Phuket,Thailand,South
+266,Ban Ko Kaeo,Phuket,Thailand,South
+267,Kathu,Phuket,Thailand,South
+268,Mueang Phuket,Phuket,Thailand,South
+269,Phuket,Phuket,Thailand,South
+270,Thalang,Phuket,Thailand,South
+271,La-ngu,Satun,Thailand,South
+272,Phiman,Satun,Thailand,South
+273,Ban Mai,Songkhla,Thailand,South
+274,Hat Yai,Songkhla,Thailand,South
+275,Ban Tai,Surat Thani,Thailand,South
+276,Bo Put,Surat Thani,Thailand,South
+277,Ko Pha-ngan,Surat Thani,Thailand,South
+278,Ko Samui,Surat Thani,Thailand,South
+279,Surat Thani,Surat Thani,Thailand,South
+280,Trang,Trang,Thailand,South
+281,Betong,Yala,Thailand,South
+282,Yala,Yala,Thailand,South
+283,Ban Tai,Kanchanaburi,Thailand,West
+284,Kanchanaburi,Kanchanaburi,Thailand,West
+285,Nong Prue,Kanchanaburi,Thailand,West
+286,Phanom Thuan,Kanchanaburi,Thailand,West
+287,Sangkhla Buri,Kanchanaburi,Thailand,West
+288,Tha Maka,Kanchanaburi,Thailand,West
+289,Tha Muang,Kanchanaburi,Thailand,West
+290,Wang Khanai,Kanchanaburi,Thailand,West
+291,Cha-am,Phetchaburi,Thailand,West
+292,Khao Yai,Phetchaburi,Thailand,West
+293,Bang Saphan Noi,Prachuap Khiri Khan,Thailand,West
+294,Hin Lek Fai,Prachuap Khiri Khan,Thailand,West
+295,Hua Hin,Prachuap Khiri Khan,Thailand,West
+296,Prachuap Khiri Khan,Prachuap Khiri Khan,Thailand,West
+297,Sam Roi Yot,Prachuap Khiri Khan,Thailand,West
+298,Thap Sakae,Prachuap Khiri Khan,Thailand,West
+299,Thap Tai,Prachuap Khiri Khan,Thailand,West
+300,Ban Pong,Ratchaburi,Thailand,West
+301,Na Mueang,Ratchaburi,Thailand,West
+302,Rang Bua,Ratchaburi,Thailand,West
+303,Ratchaburi,Ratchaburi,Thailand,West
