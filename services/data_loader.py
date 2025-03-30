@@ -69,3 +69,13 @@ def connection_str(dbname:str):
         "status": "ok",
         "message":"success"
     }
+
+def get_chart_location_label(region, state, city):
+    if city != "ทั้งหมด" and city != "โปรดเลือกจังหวัดก่อน":
+        return f"{state} : {city}"
+    elif state != "ทั้งหมด" and state != "โปรดเลือกภูมิภาคก่อน":
+        return state
+    elif region != "ทั้งหมด":
+        return f"ภูมิภาค {region}"
+    else:
+        return "ทั้งประเทศ"

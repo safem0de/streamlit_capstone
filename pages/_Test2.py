@@ -12,18 +12,7 @@ hide_sidebar_nav()
 # ✅ สร้าง Sidebar Menu
 create_sidebar()
 
-# # ตั้งค่าการเชื่อมต่อกับ PostgreSQL
-# db_config = {
-#     "dbname": "aqi_database",
-#     "user": "airflow",
-#     "password": "airflow",
-#     "host": "localhost",
-#     "port": "30524"
-# }
-# engine = create_engine(f"postgresql://{db_config['user']}:{db_config['password']}@{db_config['host']}:{db_config['port']}/{db_config['dbname']}")
 
-# # ดึงข้อมูลจาก Database
-# data = pd.read_sql("SELECT * FROM air_quality_raw", con=engine)
 if platform.system() == "Windows":
     print("🪟 Running on Windows")
     data = pd.read_csv("backup_data\\air_quality_raw_202503202336.csv")
