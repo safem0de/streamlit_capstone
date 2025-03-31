@@ -75,7 +75,7 @@ st.sidebar.write(f"🏘️ City: {selected_city}")
 # Join Fact Table กับ Location Table
 dwh_data = pd.merge(fact_air, dim_location, on="location_id", how="left")
 dwh_data["datetime"] = pd.to_datetime(dwh_data["time_id"].astype(str), format="%Y%m%d%H")
-print(data.head(10))
+print(dwh_data.head(10))
 
 fact_air["date_str"] = fact_air["time_id"].astype(str).str[:8]  # ตัดเฉพาะ YYYYMMDD
 fact_air["date"] = pd.to_datetime(fact_air["date_str"], format="%Y%m%d").dt.date

@@ -30,8 +30,16 @@ if connection_str("aqi_database")["status"] == "ok":
 elif platform.system() == "Windows":
     print("🪟 Running on Windows")
     data = pd.read_csv("backup_data\\air_quality_raw_202503202336.csv")
+    # Load datasets
+    dim_location = pd.read_csv("backup_data\\dim_location_202503292133.csv")
+    dim_time = pd.read_csv("backup_data\\dim_time_202503292134.csv")
+    fact_air = pd.read_csv("backup_data\\fact_air_quality_202503292134.csv")
 else:
     data = pd.read_csv("backup_data/air_quality_raw_202503202336.csv")
+    # Load datasets
+    dim_location = pd.read_csv("backup_data\\dim_location_202503292133.csv")
+    dim_time = pd.read_csv("backup_data\\dim_time_202503292134.csv")
+    fact_air = pd.read_csv("backup_data\\fact_air_quality_202503292134.csv")
 
 st.title("Dashboard AQI Daily 📊")
 
@@ -65,15 +73,10 @@ st.sidebar.write(f"🌍 Region: {selected_region}")
 st.sidebar.write(f"🏙️ State: {selected_state}")
 st.sidebar.write(f"🏘️ City: {selected_city}")
 
-# Load datasets
-dim_location = pd.read_csv("backup_data\\dim_location_202503292133.csv")
-dim_time = pd.read_csv("backup_data\\dim_time_202503292134.csv")
-fact_air = pd.read_csv("backup_data\\fact_air_quality_202503292134.csv")
-
 # Join Fact Table กับ Location Table
-data = pd.merge(fact_air, dim_location, on="location_id", how="left")
-data["datetime"] = pd.to_datetime(data["time_id"].astype(str), format="%Y%m%d%H")
-print(data.head(10))
+dwh_data = pd.merge(fact_air, dim_location, on="location_id", how="left")
+dwh_data["datetime"] = pd.to_datetime(dwh_data["time_id"].astype(str), format="%Y%m%d%H")
+print(dwh_data.head(10))
 
 fact_air["date_str"] = fact_air["time_id"].astype(str).str[:8]  # ตัดเฉพาะ YYYYMMDD
 fact_air["date"] = pd.to_datetime(fact_air["date_str"], format="%Y%m%d").dt.date
@@ -82,7 +85,7 @@ latest_date = fact_air["date"].max()
 str_latest_date = latest_date.strftime('%d %b %Y')
 
 # ✅ Filter latest date by sidebar
-data_latest_day = data[data["datetime"].dt.date == latest_date]
+data_latest_day = dwh_data[dwh_data["datetime"].dt.date == latest_date]
 
 filtered_hourly = data_latest_day.copy()
 if selected_region != "ทั้งหมด":
