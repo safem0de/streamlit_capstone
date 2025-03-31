@@ -23,10 +23,14 @@ create_sidebar()
 
 # ตั้งค่าการเชื่อมต่อกับ PostgreSQL ถ้าไม่ได้ไปใช้ file backup
 data = pd.DataFrame
-if connection_str("aqi_database")["status"] == "ok":
-    conn_str = str(connection_str("aqi_database")["data"])
-    print(conn_str)
-    data = fetch_data(conn_str, str("SELECT * FROM vw_air_quality_latest"))
+if connection_str("aqi_database")["status"] == "ok" and connection_str("aqi_datawarehouse")["status"] == "ok":
+    conn_str_db = str(connection_str("aqi_database")["data"])
+    conn_str_dwh = str(connection_str("aqi_datawarehouse")["data"])
+    # print(conn_str_db)
+    data = fetch_data(conn_str_db, str("SELECT * FROM vw_air_quality_latest"))
+    dim_location = fetch_data(conn_str_dwh, "SELECT * FROM dim_location")
+    dim_time = fetch_data(conn_str_dwh, "SELECT * FROM vw_latest_dim_time")
+    fact_air = fetch_data(conn_str_dwh, "SELECT * FROM vw_air_quality_latest_per_location_today")
 elif platform.system() == "Windows":
     print("🪟 Running on Windows")
     data = pd.read_csv("backup_data\\air_quality_raw_202503202336.csv")
