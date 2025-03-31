@@ -27,10 +27,10 @@ if connection_str("aqi_database")["status"] == "ok" and connection_str("aqi_data
     conn_str_db = str(connection_str("aqi_database")["data"])
     conn_str_dwh = str(connection_str("aqi_datawarehouse")["data"])
     # print(conn_str_db)
-    data = fetch_data(conn_str_db, str("SELECT * FROM air_quality_raw"))
+    data = fetch_data(conn_str_db, str("SELECT * FROM air_quality_raw")) # Change to dwh data
     dim_location = fetch_data(conn_str_dwh, "SELECT * FROM dim_location")
-    dim_time = fetch_data(conn_str_dwh, "SELECT * FROM dim_time")
-    fact_air = fetch_data(conn_str_dwh, "SELECT * FROM fact_air_quality")
+    dim_time = fetch_data(conn_str_dwh, "SELECT * FROM dim_time") # Scope for Weekly show
+    fact_air = fetch_data(conn_str_dwh, "SELECT * FROM fact_air_quality") # create view for simple
 elif platform.system() == "Windows":
     print("🪟 Running on Windows")
     data = pd.read_csv("backup_data\\air_quality_raw_202503202336.csv")
