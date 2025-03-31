@@ -190,13 +190,13 @@ run
 ```
 ---
 ### docker without sudo วิธีทำบน Ubuntu / Debian
-สร้าง group docker (ถ้ายังไม่มี)
+* สร้าง group docker (ถ้ายังไม่มี)
 ```bash
 sudo groupadd docker
 ```
 (ถ้ามีอยู่แล้วจะขึ้นว่า group มีอยู่แล้ว ไม่เป็นไร)
 
-เพิ่ม user ปัจจุบันเข้า group docker
+* เพิ่ม user ปัจจุบันเข้า group docker
 ```bash
 sudo usermod -aG docker $USER
 ```
@@ -204,14 +204,25 @@ sudo usermod -aG docker $USER
 ```bash
 sudo usermod -aG docker ubuntu
 ```
-รีโหลด session หรือ logout/login
+* รีโหลด session หรือ logout/login
 คุณต้อง ออกจาก shell แล้วเข้ากลับมาใหม่ หรือรันคำสั่งนี้:
 ```bash
 newgrp docker
 ```
 เพื่อโหลด group ใหม่แบบไม่ต้อง logout
 
-ทดสอบ
+* ทดสอบ
 ```bash
 docker ps
 ```
+
+### Postgres Extesion (Needed)
+```bash
+dblink
+```
+
+#### How to backup view or schema fom database
+ถ้าคุณใช้ DBeaver:
+1. คลิกขวาที่ชื่อ View
+2. เลือก ➜ Generate SQL ➜ DDL
+3. Copy แล้วบันทึกลงไฟล์ .sql
