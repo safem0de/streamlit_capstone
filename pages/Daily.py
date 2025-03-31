@@ -78,14 +78,14 @@ st.sidebar.write(f"🏙️ State: {selected_state}")
 st.sidebar.write(f"🏘️ City: {selected_city}")
 
 # Join Fact Table กับ Location Table
-dwh_data = pd.merge(fact_air, dim_location, on="location_id", how="left")
+dwh_data = pd.merge(fact_air, dim_location, on="location_id", how="inner")
 dwh_data["datetime"] = pd.to_datetime(dwh_data["time_id"].astype(str), format="%Y%m%d%H")
-print(dwh_data.head(10))
+print(dwh_data.head(5))
 
-fact_air["date_str"] = fact_air["time_id"].astype(str).str[:8]  # ตัดเฉพาะ YYYYMMDD
-fact_air["date"] = pd.to_datetime(fact_air["date_str"], format="%Y%m%d").dt.date
+dwh_data["date_str"] = dwh_data["time_id"].astype(str).str[:8]  # ตัดเฉพาะ YYYYMMDD
+dwh_data["date"] = pd.to_datetime(dwh_data["date_str"], format="%Y%m%d").dt.date
 
-latest_date = fact_air["date"].max()
+latest_date = dwh_data["date"].max()
 str_latest_date = latest_date.strftime('%d %b %Y')
 
 # ✅ Filter latest date by sidebar
@@ -225,8 +225,18 @@ else:
     )
 
 
-# ✅ ปรับ layout เพิ่มเติม (optional)
+# ✅ ปรับ layout
 fig_line.update_layout(
+    xaxis_tickformat="%H:%M",
+    yaxis_tickformat=".2f",
+    hovermode="x unified"
+)
+fig_temp.update_layout(
+    xaxis_tickformat="%H:%M",
+    yaxis_tickformat=".2f",
+    hovermode="x unified"
+)
+fig_humid.update_layout(
     xaxis_tickformat="%H:%M",
     yaxis_tickformat=".2f",
     hovermode="x unified"
@@ -253,7 +263,7 @@ with st.expander("📊 ตารางข้อมูล AQI รายชั่�
     )
 
 # คำนวณ AQI (US) เฉลี่ยสำหรับแต่ละจังหวัด
-province_aqi = data.groupby("state")[["aqius", "aqicn"]].mean().reset_index()
+province_aqi = dwh_data.groupby("state")[["aqius", "aqicn"]].mean().reset_index()
 
 # ปัดทศนิยม 3 ตำแหน่ง
 province_aqi["aqius"] = province_aqi["aqius"].round(3)
@@ -272,7 +282,7 @@ fig_best = px.bar(
     x="state",
     y="aqius",
     title=f"Top 10 จังหวัด AQI ดีที่สุด (US) — อัปเดตล่าสุด: {str_latest_date}",
-    labels={"aqius": "ค่า AQI (US)"},
+    labels={"aqius": "ค่า AQI (US)", "state": "จังหวัด"},
     color="aqius",
     color_continuous_scale="Viridis",
     text="aqius_text"
@@ -287,7 +297,7 @@ fig_worst = px.bar(
     x="state",
     y="aqius",
     title=f"Top 10 จังหวัด AQI แย่ที่สุด (US) — อัปเดตล่าสุด: {str_latest_date}",
-    labels={"aqius": "ค่า AQI (US)"},
+    labels={"aqius": "ค่า AQI (US)", "state": "จังหวัด"},
     color="aqius",
     color_continuous_scale="Reds",
     text="aqius_text"
