@@ -120,22 +120,6 @@ st.markdown("---")
 # ✅ กราฟเปรียบเทียบ AQI ระหว่างภูมิภาค (ด้านล่าง col3)
 make_responsive("📊 เปรียบเทียบ AQI ระหว่างภูมิภาค") 
 
-
-# region_dual = filtered_data.groupby("region")[["aqius", "aqicn"]].mean().reset_index().round(3)
-# region_dual = region_dual.sort_values(by="aqius", ascending=False)
-
-# dual_chart = px.bar(
-#     region_dual.melt(id_vars="region", value_vars=["aqius", "aqicn"],
-#                      var_name="AQI Type", value_name="Value"),
-#     x="region", y="Value", color="AQI Type",
-#     barmode="group",
-#     title=f"AQI (US & CN) เปรียบเทียบแยกตามภูมิภาค - อัปเดตล่าสุด: {latest_timestamp_str}",
-#     labels={"Value": "ค่า AQI"},
-#     height=500
-# )
-
-# st.plotly_chart(dual_chart, use_container_width=True)
-
 region_aqi_data = round(filtered_data.groupby("region")["aqius"].mean(),3).reset_index()
 region_aqi_data = region_aqi_data.sort_values(by="aqius", ascending=False)
 
@@ -149,7 +133,7 @@ if num_regions > 5:
 elif 2 <= num_regions <= 5:
     _bargap = 0.5
 else:
-    _bargap = 0.8
+    _bargap = 0.6
 
 if selected_region != "ทั้งหมด":
     provinces_in_region = (

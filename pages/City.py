@@ -3,8 +3,9 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-from sqlalchemy import create_engine
-from components.sidebar import hide_sidebar_nav, create_sidebar
+from components.sidebar import *
+from services.data_loader import *
+from utils.helpers import *
 
 # ✅ ซ่อน Sidebar Navigation
 hide_sidebar_nav()
@@ -13,14 +14,17 @@ hide_sidebar_nav()
 create_sidebar()
 
 
-if platform.system() == "Windows":
+# ตั้งค่าการเชื่อมต่อกับ PostgreSQL ถ้าไม่ได้ไปใช้ file backup
+data = pd.DataFrame
+if connection_str("aqi_database")["status"] == "ok":
+    conn_str = str(connection_str("aqi_database")["data"])
+    print(conn_str)
+    data = fetch_data(conn_str, str("SELECT * FROM vw_air_quality_latest"))
+elif platform.system() == "Windows":
     print("🪟 Running on Windows")
     data = pd.read_csv("backup_data\\air_quality_raw_202503202336.csv")
 else:
     data = pd.read_csv("backup_data/air_quality_raw_202503202336.csv")
-
-data.columns = data.columns.str.lower()  # แปลงชื่อคอลัมน์เป็นตัวพิมพ์เล็กทั้งหมด
-data['timestamp'] = pd.to_datetime(data['timestamp'])
 
 # Sidebar Filters
 st.sidebar.header("🔎 ตัวกรองข้อมูล")

@@ -17,8 +17,8 @@ def create_sidebar():
     st.sidebar.page_link("pages/Monthly.py", label="Monthly")
 
     st.sidebar.markdown("### 🌍 Data Reports")
-    st.sidebar.page_link("pages/Region.py", label="Region")
-    st.sidebar.page_link("pages/_Test.py", label="Test")
-    st.sidebar.page_link("pages/_Test2.py", label="Test2")
+    st.sidebar.page_link("pages/Region.py", label="Region (ภูมิภาค)")
+    st.sidebar.page_link("pages/State.py", label="State (จังหวัด)")
+    st.sidebar.page_link("pages/City.py", label="City (เขต/อำเภอ)")
 
     st.sidebar.markdown("---")

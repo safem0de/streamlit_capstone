@@ -81,61 +81,6 @@ fact_air["date"] = pd.to_datetime(fact_air["date_str"], format="%Y%m%d").dt.date
 latest_date = fact_air["date"].max()
 str_latest_date = latest_date.strftime('%d %b %Y')
 
-# คำนวณ AQI (US) เฉลี่ยสำหรับแต่ละจังหวัด
-province_aqi = data.groupby("state")[["aqius", "aqicn"]].mean().reset_index()
-
-# ปัดทศนิยม 3 ตำแหน่ง
-province_aqi["aqius"] = province_aqi["aqius"].round(3)
-province_aqi["aqicn"] = province_aqi["aqicn"].round(3)
-
-# เรียงลำดับ AQI จากมากไปน้อย
-top_10_best = province_aqi.sort_values(by="aqius", ascending=True).head(10)
-top_10_worst = province_aqi.sort_values(by="aqius", ascending=False).head(10)
-
-top_10_best["aqius_text"] = top_10_best["aqius"].apply(lambda x: f"{x:.3f}")
-top_10_worst["aqius_text"] = top_10_worst["aqius"].apply(lambda x: f"{x:.3f}")
-
-# Bar Chart สำหรับ Top 10 จังหวัดที่ AQI ดีที่สุด
-fig_best = px.bar(
-    top_10_best,
-    x="state",
-    y="aqius",
-    title=f"Top 10 จังหวัด AQI ดีที่สุด (US) — อัปเดตล่าสุด: {str_latest_date}",
-    labels={"aqius": "ค่า AQI (US)"},
-    color="aqius",
-    color_continuous_scale="Viridis",
-    text="aqius_text"
-)
-
-fig_best.update_traces(texttemplate='%{text}', textposition='outside')
-fig_best.update_layout(yaxis_tickformat=".3f", margin=dict(l=80, r=20, t=40, b=20))
-
-# Bar Chart สำหรับ Top 10 จังหวัดที่ AQI แย่ที่สุด
-fig_worst = px.bar(
-    top_10_worst,
-    x="state",
-    y="aqius",
-    title=f"Top 10 จังหวัด AQI แย่ที่สุด (US) — อัปเดตล่าสุด: {str_latest_date}",
-    labels={"aqius": "ค่า AQI (US)"},
-    color="aqius",
-    color_continuous_scale="Reds",
-    text="aqius_text"
-)
-
-fig_worst.update_traces(texttemplate='%{text}', textposition='outside')
-fig_worst.update_layout(yaxis_tickformat=".3f", margin=dict(l=80, r=20, t=40, b=20))
-
-# แสดงกราฟ
-st.plotly_chart(fig_best, use_container_width=True)
-show_responsive_table(top_10_best[["state", "aqius", "aqicn"]].style.format({"aqius": "{:.3f}", "aqicn": "{:.3f}"}),"📋 คลิกเพื่อดูตารางจังหวัดที่ AQI ดีที่สุด")
-    
-st.markdown("---")
-
-st.plotly_chart(fig_worst, use_container_width=True)
-show_responsive_table(top_10_worst[["state", "aqius", "aqicn"]].style.format({"aqius": "{:.3f}", "aqicn": "{:.3f}"}),"📋 คลิกเพื่อดูตารางจังหวัดที่ AQI แย่ที่สุด")
-
-st.write("---")
-
 # ✅ Filter latest date by sidebar
 data_latest_day = data[data["datetime"].dt.date == latest_date]
 
@@ -299,3 +244,58 @@ with st.expander("📊 ตารางข้อมูล AQI รายชั่�
         }),
         use_container_width=True
     )
+
+# คำนวณ AQI (US) เฉลี่ยสำหรับแต่ละจังหวัด
+province_aqi = data.groupby("state")[["aqius", "aqicn"]].mean().reset_index()
+
+# ปัดทศนิยม 3 ตำแหน่ง
+province_aqi["aqius"] = province_aqi["aqius"].round(3)
+province_aqi["aqicn"] = province_aqi["aqicn"].round(3)
+
+# เรียงลำดับ AQI จากมากไปน้อย
+top_10_best = province_aqi.sort_values(by="aqius", ascending=True).head(10)
+top_10_worst = province_aqi.sort_values(by="aqius", ascending=False).head(10)
+
+top_10_best["aqius_text"] = top_10_best["aqius"].apply(lambda x: f"{x:.3f}")
+top_10_worst["aqius_text"] = top_10_worst["aqius"].apply(lambda x: f"{x:.3f}")
+
+# Bar Chart สำหรับ Top 10 จังหวัดที่ AQI ดีที่สุด
+fig_best = px.bar(
+    top_10_best,
+    x="state",
+    y="aqius",
+    title=f"Top 10 จังหวัด AQI ดีที่สุด (US) — อัปเดตล่าสุด: {str_latest_date}",
+    labels={"aqius": "ค่า AQI (US)"},
+    color="aqius",
+    color_continuous_scale="Viridis",
+    text="aqius_text"
+)
+
+fig_best.update_traces(texttemplate='%{text}', textposition='outside')
+fig_best.update_layout(yaxis_tickformat=".3f", margin=dict(l=80, r=20, t=40, b=20))
+
+# Bar Chart สำหรับ Top 10 จังหวัดที่ AQI แย่ที่สุด
+fig_worst = px.bar(
+    top_10_worst,
+    x="state",
+    y="aqius",
+    title=f"Top 10 จังหวัด AQI แย่ที่สุด (US) — อัปเดตล่าสุด: {str_latest_date}",
+    labels={"aqius": "ค่า AQI (US)"},
+    color="aqius",
+    color_continuous_scale="Reds",
+    text="aqius_text"
+)
+
+fig_worst.update_traces(texttemplate='%{text}', textposition='outside')
+fig_worst.update_layout(yaxis_tickformat=".3f", margin=dict(l=80, r=20, t=40, b=20))
+
+# แสดงกราฟ
+st.plotly_chart(fig_best, use_container_width=True)
+show_responsive_table(top_10_best[["state", "aqius", "aqicn"]].style.format({"aqius": "{:.3f}", "aqicn": "{:.3f}"}),"📋 คลิกเพื่อดูตารางจังหวัดที่ AQI ดีที่สุด")
+    
+st.markdown("---")
+
+st.plotly_chart(fig_worst, use_container_width=True)
+show_responsive_table(top_10_worst[["state", "aqius", "aqicn"]].style.format({"aqius": "{:.3f}", "aqicn": "{:.3f}"}),"📋 คลิกเพื่อดูตารางจังหวัดที่ AQI แย่ที่สุด")
+
+st.write("---")
