@@ -97,9 +97,9 @@ st.sidebar.write(f"🏙️ State: {selected_state}")
 st.sidebar.write(f"🏘️ City: {selected_city}")
 
 # ✅ Filter latest date by sidebar
-data_latest_day = dwh_data[dwh_data["datetime"].dt.date == selected_date]
+data_selected_day = dwh_data[dwh_data["datetime"].dt.date == selected_date]
 
-filtered_hourly = data_latest_day.copy()
+filtered_hourly = data_selected_day.copy()
 if selected_region != "ทั้งหมด":
     filtered_hourly = filtered_hourly[filtered_hourly["region"] == selected_region]
 if selected_state != "ทั้งหมด" and selected_state != "โปรดเลือกภูมิภาคก่อน":
