@@ -226,3 +226,41 @@ dblink
 1. คลิกขวาที่ชื่อ View
 2. เลือก ➜ Generate SQL ➜ DDL
 3. Copy แล้วบันทึกลงไฟล์ .sql
+
+ #### Data Quality Concept
+ ```bash
+SELECT COUNT(*) FILTER (WHERE aqius IS NULL) AS null_aqius,
+       COUNT(*) FILTER (WHERE mainus IS NULL) AS null_mainus,
+       COUNT(*) FILTER (WHERE aqicn IS NULL) AS null_aqicn,
+       COUNT(*) FILTER (WHERE temperature IS NULL) AS null_temperature,
+       COUNT(*) FILTER (WHERE pressure IS NULL) AS null_pressure,
+       COUNT(*) FILTER (WHERE humidity IS NULL) AS null_humidity,
+       COUNT(*) FILTER (WHERE wind_speed IS NULL) AS null_wind_speed,
+       COUNT(*) FILTER (WHERE wind_direction IS NULL) AS null_wind_direction
+FROM fact_air_quality;
+
+
+SELECT COUNT(*) FILTER (WHERE aqius = 0) AS zero_aqius,
+       COUNT(*) FILTER (WHERE temperature = 0) AS zero_temperature,
+       COUNT(*) FILTER (WHERE pressure = 0) AS zero_pressure,
+       COUNT(*) FILTER (WHERE humidity = 0) AS zero_humidity,
+       COUNT(*) FILTER (WHERE wind_speed = 0) AS zero_wind_speed
+FROM fact_air_quality;
+
+
+SELECT time_id, location_id, COUNT(*) as occurrences
+FROM fact_air_quality
+GROUP BY time_id, location_id
+HAVING COUNT(*) > 1;
+
+
+SELECT *
+FROM fact_air_quality
+WHERE (time_id, location_id) IN (
+    SELECT time_id, location_id
+    FROM fact_air_quality
+    GROUP BY time_id, location_id
+    HAVING COUNT(*) > 1
+)
+ORDER BY time_id, location_id;
+```

@@ -2,9 +2,6 @@ import pandas as pd
 import configparser, os
 from sqlalchemy import create_engine
 
-def load_user_data():
-    return pd.DataFrame({"Name": ["Alice", "Bob"], "Age": [25, 30]})
-
 def fetch_data(conn_str, query):
     engine = create_engine(conn_str)
     raw_conn = engine.raw_connection()

@@ -21,4 +21,7 @@ def create_sidebar():
     st.sidebar.page_link("pages/State.py", label="State (จังหวัด)")
     st.sidebar.page_link("pages/City.py", label="City (เขต/อำเภอ)")
 
+    st.sidebar.markdown("### 📈 Data Quality Report")
+    # st.sidebar.page_link("pages/Region.py", label="Region (ภูมิภาค)")
+
     st.sidebar.markdown("---")

@@ -29,8 +29,8 @@ if connection_str("aqi_database")["status"] == "ok" and connection_str("aqi_data
     # print(conn_str_db)
     # data = fetch_data(conn_str_db, str("SELECT * FROM vw_air_quality_latest"))
     dim_location = fetch_data(conn_str_dwh, "SELECT * FROM dim_location")
-    dim_time = fetch_data(conn_str_dwh, "SELECT * FROM vw_latest_dim_time")
-    fact_air = fetch_data(conn_str_dwh, "SELECT * FROM vw_air_quality_latest_date_per_location")
+    dim_time = fetch_data(conn_str_dwh, "SELECT * FROM dim_time")
+    fact_air = fetch_data(conn_str_dwh, "SELECT * FROM fact_air_quality")
 elif platform.system() == "Windows":
     print("🪟 Running on Windows")
     # data = pd.read_csv("backup_data\\air_quality_raw_202503202336.csv")
