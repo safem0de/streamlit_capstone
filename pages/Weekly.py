@@ -22,24 +22,24 @@ hide_sidebar_nav()
 create_sidebar()
 
 # ตั้งค่าการเชื่อมต่อกับ PostgreSQL ถ้าไม่ได้ไปใช้ file backup
-data = pd.DataFrame
+# data = pd.DataFrame
 if connection_str("aqi_database")["status"] == "ok" and connection_str("aqi_datawarehouse")["status"] == "ok":
     conn_str_db = str(connection_str("aqi_database")["data"])
     conn_str_dwh = str(connection_str("aqi_datawarehouse")["data"])
     # print(conn_str_db)
-    data = fetch_data(conn_str_db, str("SELECT * FROM air_quality_raw")) # Change to dwh data
+    # data = fetch_data(conn_str_db, str("SELECT * FROM air_quality_raw")) # Change to dwh data
     dim_location = fetch_data(conn_str_dwh, "SELECT * FROM dim_location")
-    dim_time = fetch_data(conn_str_dwh, "SELECT * FROM dim_time") # Scope for Weekly show
-    fact_air = fetch_data(conn_str_dwh, "SELECT * FROM fact_air_quality") # create view for simple
+    dim_time = fetch_data(conn_str_dwh, "SELECT * FROM vw_current_week_dim_time") # Scope for Weekly show
+    fact_air = fetch_data(conn_str_dwh, "SELECT * FROM vw_air_quality_current_week_per_location") # create view for simple
 elif platform.system() == "Windows":
     print("🪟 Running on Windows")
-    data = pd.read_csv("backup_data\\air_quality_raw_202503202336.csv")
+    # data = pd.read_csv("backup_data\\air_quality_raw_202503202336.csv")
     # Load datasets
     dim_location = pd.read_csv("backup_data\\dim_location_202503292133.csv")
     dim_time = pd.read_csv("backup_data\\dim_time_202503292134.csv")
     fact_air = pd.read_csv("backup_data\\fact_air_quality_202503292134.csv")
 else:
-    data = pd.read_csv("backup_data/air_quality_raw_202503202336.csv")
+    # data = pd.read_csv("backup_data/air_quality_raw_202503202336.csv")
     # Load datasets
     dim_location = pd.read_csv("backup_data\\dim_location_202503292133.csv")
     dim_time = pd.read_csv("backup_data\\dim_time_202503292134.csv")
@@ -51,7 +51,7 @@ st.title("Dashboard AQI Weekly 📊")
 st.sidebar.header("🔎 ตัวกรองข้อมูล")
 
 # ✅ 1. เลือก Region
-region_options = ["ทั้งหมด"] + sorted(data["region"].dropna().unique())
+region_options = ["ทั้งหมด"] + sorted(dim_location["region"].dropna().unique())
 selected_region = st.sidebar.selectbox("เลือกภูมิภาค", region_options)
 
 # ✅ 2. State Dropdown (ถ้ายังไม่เลือก Region -> ปิด Dropdown)
@@ -60,7 +60,7 @@ state_placeholder = st.sidebar.empty()
 if selected_region == "ทั้งหมด":
     selected_state = state_placeholder.selectbox("เลือกจังหวัด", ["โปรดเลือกภูมิภาคก่อน"], disabled=True)
 else:
-    state_options = ["ทั้งหมด"] + sorted(data[data["region"] == selected_region]["state"].dropna().unique())
+    state_options = ["ทั้งหมด"] + sorted(dim_location[dim_location["region"] == selected_region]["state"].dropna().unique())
     selected_state = state_placeholder.selectbox("เลือกจังหวัด", state_options)
 
 # ✅ 3. City Dropdown (ถ้ายังไม่เลือก State -> ปิด Dropdown)
@@ -69,7 +69,7 @@ city_placeholder = st.sidebar.empty()
 if selected_state == "ทั้งหมด" or selected_state == "โปรดเลือกภูมิภาคก่อน":
     selected_city = city_placeholder.selectbox("เลือกอำเภอ/เขต", ["โปรดเลือกจังหวัดก่อน"], disabled=True)
 else:
-    city_options = ["ทั้งหมด"] + sorted(data[data["state"] == selected_state]["city"].dropna().unique())
+    city_options = ["ทั้งหมด"] + sorted(dim_location[dim_location["state"] == selected_state]["city"].dropna().unique())
     selected_city = city_placeholder.selectbox("เลือกอำเภอ/เขต", city_options)
 
 # ✅ แสดงค่าที่เลือก
@@ -139,7 +139,7 @@ if selected_city != "ทั้งหมด" and selected_city != "โปรด�
     )
 # ✅ กรณี 2: เลือกจังหวัด
 elif selected_state != "ทั้งหมด" and selected_state != "โปรดเลือกภูมิภาคก่อน":
-    avg_hourly = aqi_line_data.groupby("datetime")[["aqius"]].mean().reset_index()
+    avg_hourly = aqi_line_data.groupby("date")[["aqius"]].mean().reset_index()
     fig_line = px.line(
         avg_hourly,
         x="date",
@@ -148,7 +148,7 @@ elif selected_state != "ทั้งหมด" and selected_state != "โปร�
         labels={"aqius": "ค่า AQI (US)", "date": "วันที่"},
         markers=True
     )
-    avg_temp = temp_line_data.groupby("datetime")[["temperature"]].mean().reset_index()
+    avg_temp = temp_line_data.groupby("date")[["temperature"]].mean().reset_index()
     fig_temp = px.line(
         avg_temp,
         x="date",
@@ -157,7 +157,7 @@ elif selected_state != "ทั้งหมด" and selected_state != "โปร�
         labels={"temperature": "อุณหภูมิ (°C)", "date": "วันที่"},
         markers=True
     )
-    avg_humid = humid_line_data.groupby("datetime")[["humidity"]].mean().reset_index()
+    avg_humid = humid_line_data.groupby("date")[["humidity"]].mean().reset_index()
     fig_humid = px.line(
         avg_humid,
         x="date",
@@ -168,7 +168,7 @@ elif selected_state != "ทั้งหมด" and selected_state != "โปร�
     )
 # ✅ กรณี 3: เลือกภูมิภาค
 elif selected_region != "ทั้งหมด":
-    avg_hourly = aqi_line_data.groupby("datetime")[["aqius"]].mean().reset_index()
+    avg_hourly = aqi_line_data.groupby("date")[["aqius"]].mean().reset_index()
     fig_line = px.line(
         avg_hourly,
         x="date",
@@ -177,7 +177,7 @@ elif selected_region != "ทั้งหมด":
         labels={"aqius": "ค่า AQI (US)", "date": "วันที่"},
         markers=True
     )
-    avg_temp = temp_line_data.groupby("datetime")[["temperature"]].mean().reset_index()
+    avg_temp = temp_line_data.groupby("date")[["temperature"]].mean().reset_index()
     fig_temp = px.line(
         avg_temp,
         x="date",

@@ -79,6 +79,6 @@ for _, row in location_data.iterrows():
     ).add_to(m)
 
 # แสดงแผนที่ใน Streamlit
-st.title("Air Quality Map ... By 67130503")
+st.title("Air Quality Map - By 67130503(NW)")
 # folium_static(m)
 html(m.get_root().render(), height=900)
