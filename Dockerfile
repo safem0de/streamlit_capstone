@@ -11,6 +11,8 @@ RUN groupadd --gid 1000 appuser && \
 # -----------------------------
 RUN apt-get update && apt-get install -y \
     build-essential \
+    libpq-dev \
+    python3-dev \
     software-properties-common \
     git \
     curl \
