@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     python3-dev \
     software-properties-common \
+    procps \ 
     git \
     curl \
     ca-certificates \

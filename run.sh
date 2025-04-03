@@ -22,6 +22,13 @@ trap stopRunningProcess EXIT TERM
 echo "🔍 Activating virtualenv..."
 source ${VIRTUAL_ENV}/bin/activate
 
+APP_FILE="${APP_HOME}/app.py"
+
+if [ ! -f "${APP_FILE}" ]; then
+  echo "❌ ERROR: ${APP_FILE} not found!"
+  exit 1
+fi
+
 echo "🚀 Starting Streamlit..."
 streamlit run ${APP_HOME}/app.py \
   --server.port 8501 \

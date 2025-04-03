@@ -72,7 +72,7 @@ echo *.cfg
 
 ### Create Folders
 ```bash
-type nul > "app.py"
+type nul > "streamlit_app.py"
 
 mkdir ".streamlit"
 type nul > ".streamlit/config.toml"
@@ -103,7 +103,7 @@ python -m venv venv
 
 ### Run Project
 ```bash
-streamlit run app.py
+streamlit run streamlit_app.py
 ```
 
 ### Before Git Commit
@@ -168,6 +168,9 @@ curl -X GET http://43.209.49.162:32000/v2/_catalog
 ```bash
 kubectl create namespace streamlit
 kubectl apply -f ./ --namespace=streamlit
+```
+```bash
+kubectl logs -l app=streamlit -n streamlit
 ```
 
 ### ลบทุกอย่าง
