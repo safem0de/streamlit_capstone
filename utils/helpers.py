@@ -22,7 +22,7 @@ def make_responsive(text:str, rem:float = 1.3):
         unsafe_allow_html=True
     )
 
-def show_responsive_table(df, title="📋 ดูข้อมูล", ):
+def show_responsive_table(df, title="📋 ดูข้อมูล"):
     """
     แสดงตารางใน st.expander แบบ responsive:
     - ถ้าหน้าจอกว้าง ใช้ columns จัดกลาง
@@ -47,7 +47,7 @@ def show_responsive_table(df, title="📋 ดูข้อมูล", ):
                 st.dataframe(df, use_container_width=True)
 
 
-def render_section(title: str, expanders: list, border_color="#cccccc"):
+def render_section(title: str, expanders: list):
     with st.container():
         st.markdown(
             f"""
