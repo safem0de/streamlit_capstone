@@ -15,9 +15,6 @@ st.set_page_config(
     initial_sidebar_state="expanded" # "expanded", "collapsed", or "auto"
 )
 
-# ✅ ซ่อน Sidebar Navigation
-hide_sidebar_nav()
-
 # ✅ สร้าง Sidebar Menu
 create_sidebar()
 
@@ -97,7 +94,7 @@ st.sidebar.write(f"🏙️ State: {selected_state}")
 st.sidebar.write(f"🏘️ City: {selected_city}")
 
 # ✅ Filter latest date by sidebar
-data_selected_day = dwh_data[dwh_data["datetime"].dt.date == selected_date]
+data_selected_day = dwh_data[dwh_data["date"] == selected_date]
 
 filtered_hourly = data_selected_day.copy()
 if selected_region != "ทั้งหมด":
@@ -263,15 +260,7 @@ hourly_view = filtered_hourly[[
     "datetime", "region", "state", "city", "aqius", "aqicn", "mainus", "maincn", "temperature", "humidity"
 ]].sort_values(by="datetime", ascending=False)
 
-# ✅ Show table
-with st.expander("📊 ตารางข้อมูล AQI รายชั่วโมง"):
-    st.dataframe(
-        hourly_view.style.format({
-            "aqius": "{:.3f}",
-            "aqicn": "{:.3f}"
-        }),
-        use_container_width=True
-    )
+show_responsive_table(hourly_view.style.format({"aqius": "{:.3f}", "aqicn": "{:.3f}"}),"📊 คลิกเพื่อดูตารางข้อมูล AQI รายชั่วโมง")
 
 # ✅ กรองตามวันที่ที่เลือก
 province_data_selected = dwh_data[dwh_data["datetime"].dt.date == selected_date]

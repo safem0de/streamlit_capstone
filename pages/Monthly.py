@@ -14,9 +14,6 @@ st.set_page_config(
     initial_sidebar_state="expanded" # "expanded", "collapsed", or "auto"
 )
 
-# ✅ ซ่อน Sidebar Navigation
-hide_sidebar_nav()
-
 # ✅ สร้าง Sidebar Menu
 create_sidebar()
 

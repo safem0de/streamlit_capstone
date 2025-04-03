@@ -36,11 +36,28 @@ def show_responsive_table(df, title="📋 ดูข้อมูล", ):
     """
     screen_width = st_javascript("window.innerWidth", key=f"screen_width_{title}") or 1200
     is_mobile = screen_width < 768
+    is_wide_table = len(df.columns) > 4
 
     with st.expander(title):
-        if is_mobile:
+        if is_mobile or is_wide_table:
             st.dataframe(df, use_container_width=True)
         else:
             col1, col2, col3 = st.columns([1, 2, 1])
             with col2:
+                st.dataframe(df, use_container_width=True)
+
+
+def render_section(title: str, expanders: list, border_color="#cccccc"):
+    with st.container():
+        st.markdown(
+            f"""
+            <div>
+            <h4 style="margin-top: 0px;">📁 {title}</h4>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+        for expander_title, df in expanders:
+            with st.expander(f"📋 {expander_title}"):
                 st.dataframe(df, use_container_width=True)

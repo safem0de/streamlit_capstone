@@ -7,12 +7,8 @@ from components.sidebar import *
 from services.data_loader import *
 from utils.helpers import *
 
-# ✅ ซ่อน Sidebar Navigation
-hide_sidebar_nav()
-
 # ✅ สร้าง Sidebar Menu
 create_sidebar()
-
 
 # ตั้งค่าการเชื่อมต่อกับ PostgreSQL ถ้าไม่ได้ไปใช้ file backup
 data = pd.DataFrame

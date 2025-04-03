@@ -9,6 +9,7 @@ def hide_sidebar_nav():
     """, unsafe_allow_html=True)
 
 def create_sidebar():
+    hide_sidebar_nav()
     st.sidebar.page_link("app.py", label="Home")
 
     st.sidebar.markdown("### 🕔 Time")
@@ -22,6 +23,6 @@ def create_sidebar():
     st.sidebar.page_link("pages/City.py", label="City (เขต/อำเภอ)")
 
     st.sidebar.markdown("### 📈 Data Quality Report")
-    # st.sidebar.page_link("pages/Region.py", label="Region (ภูมิภาค)")
+    st.sidebar.page_link("pages/DataQuality.py", label="Data Qaulity Report (คุณภาพข้อมูล)")
 
     st.sidebar.markdown("---")

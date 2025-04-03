@@ -7,9 +7,6 @@ from components.sidebar import *
 from services.data_loader import *
 from utils.helpers import *
 
-# ✅ ซ่อน Sidebar Navigation
-hide_sidebar_nav()
-
 # ✅ สร้าง Sidebar Menu
 create_sidebar()
 
