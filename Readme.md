@@ -164,11 +164,12 @@ mirrors:
 ```bash
 curl -X GET http://43.209.49.162:32000/v2/_catalog
 ```
-
+### kube deploy (streamlit.yaml, service.yaml)
 ```bash
 kubectl create namespace streamlit
 kubectl apply -f ./ --namespace=streamlit
 ```
+### kube log
 ```bash
 kubectl logs -l app=streamlit -n streamlit
 ```
