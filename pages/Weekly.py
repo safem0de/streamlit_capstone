@@ -128,122 +128,33 @@ humid_line_data = filtered_daily[["date", "city", "humidity"]].sort_values("date
 # ✅ ตัวช่วยชื่อสถานที่
 chart_location = get_chart_location_label(selected_region, selected_state, selected_city)
 
-# ✅ กรณี 1: เลือกเมือง
-if selected_city != "ทั้งหมด" and selected_city != "โปรดเลือกจังหวัดก่อน":
-    avg_aqi = aqi_line_data.groupby("date")[["aqius"]].mean().reset_index()
-    fig_line = px.line(
-        avg_aqi,
-        x="date",
-        y="aqius",
-        title=f"AQI (US) เฉลี่ยรายวัน — {chart_location} ({selected_week_label})",
-        labels={"aqius": "ค่า AQI (US)", "date": "วันที่"},
-        markers=True
-    )
-    avg_temp = temp_line_data.groupby("date")[["temperature"]].mean().reset_index()
-    fig_temp = px.line(
-        avg_temp,
-        x="date",
-        y="temperature",
-        title=f"อุณหภูมิ (°C) เฉลี่ยรายชั่วโมง — {chart_location} ({selected_week_label})",
-        labels={"temperature": "อุณหภูมิ (°C)", "date": "วันที่"},
-        markers=True
-    )
-    avg_humid = humid_line_data.groupby("date")[["humidity"]].mean().reset_index()
-    fig_humid = px.line(
-        avg_humid,
-        x="date",
-        y="humidity",
-        title=f"ความชื้น (%) เฉลี่ยรายชั่วโมง — {chart_location} ({selected_week_label})",
-        labels={"humidity": "ความชื้น (%)", "date": "วันที่"},
-        markers=True
-    )
-# ✅ กรณี 2: เลือกจังหวัด
-elif selected_state != "ทั้งหมด" and selected_state != "โปรดเลือกภูมิภาคก่อน":
-    avg_aqi = aqi_line_data.groupby("date")[["aqius"]].mean().reset_index()
-    fig_line = px.line(
-        avg_aqi,
-        x="date",
-        y="aqius",
-        title=f"AQI (US) เฉลี่ยรายชั่วโมง — {chart_location} ({selected_week_label})",
-        labels={"aqius": "ค่า AQI (US)", "date": "วันที่"},
-        markers=True
-    )
-    avg_temp = temp_line_data.groupby("date")[["temperature"]].mean().reset_index()
-    fig_temp = px.line(
-        avg_temp,
-        x="date",
-        y="temperature",
-        title=f"อุณหภูมิ (°C) เฉลี่ยรายชั่วโมง — {chart_location} ({selected_week_label})",
-        labels={"temperature": "อุณหภูมิ (°C)", "date": "วันที่"},
-        markers=True
-    )
-    avg_humid = humid_line_data.groupby("date")[["humidity"]].mean().reset_index()
-    fig_humid = px.line(
-        avg_humid,
-        x="date",
-        y="humidity",
-        title=f"ความชื้น (%) เฉลี่ยรายชั่วโมง — {chart_location} ({selected_week_label})",
-        labels={"humidity": "ความชื้น (%)", "date": "วันที่"},
-        markers=True
-    )
-# ✅ กรณี 3: เลือกภูมิภาค
-elif selected_region != "ทั้งหมด":
-    avg_aqi = aqi_line_data.groupby("date")[["aqius"]].mean().reset_index()
-    fig_line = px.line(
-        avg_aqi,
-        x="date",
-        y="aqius",
-        title=f"AQI (US) เฉลี่ยรายชั่วโมง — {chart_location} ({selected_week_label})",
-        labels={"aqius": "ค่า AQI (US)", "date": "วันที่"},
-        markers=True
-    )
-    avg_temp = temp_line_data.groupby("date")[["temperature"]].mean().reset_index()
-    fig_temp = px.line(
-        avg_temp,
-        x="date",
-        y="temperature",
-        title=f"อุณหภูมิ (°C) เฉลี่ยรายชั่วโมง — {chart_location} ({selected_week_label})",
-        labels={"temperature": "อุณหภูมิ (°C)", "date": "วันที่"},
-        markers=True
-    )
-    avg_humid = humid_line_data.groupby("date")[["humidity"]].mean().reset_index()
-    fig_humid = px.line(
-        avg_humid,
-        x="date",
-        y="humidity",
-        title=f"ความชื้น (%) เฉลี่ยรายชั่วโมง — {chart_location} ({selected_week_label})",
-        labels={"humidity": "ความชื้น (%)", "date": "วันที่"},
-        markers=True
-    )
-# ✅ กรณี 4: ไม่เลือกอะไรเลย (ทั่วประเทศ)
-else:
-    avg_aqi = aqi_line_data.groupby("date")[["aqius"]].mean().reset_index()
-    fig_line = px.line(
-        avg_aqi,
-        x="date",
-        y="aqius",
-        title=f"AQI (US) เฉลี่ยรายชั่วโมง — {chart_location} ({selected_week_label})",
-        labels={"aqius": "ค่า AQI (US)", "date": "วันที่"},
-        markers=True
-    )
-    avg_temp = temp_line_data.groupby("date")[["temperature"]].mean().reset_index()
-    fig_temp = px.line(
-        avg_temp,
-        x="date",
-        y="temperature",
-        title=f"อุณหภูมิ (°C) เฉลี่ยรายชั่วโมง — {chart_location} ({selected_week_label})",
-        labels={"temperature": "อุณหภูมิ (°C)", "date": "วันที่"},
-        markers=True
-    )
-    avg_humid = humid_line_data.groupby("date")[["humidity"]].mean().reset_index()
-    fig_humid = px.line(
-        avg_humid,
-        x="date",
-        y="humidity",
-        title=f"ความชื้น (%) เฉลี่ยรายชั่วโมง — {chart_location} ({selected_week_label})",
-        labels={"humidity": "ความชื้น (%)", "date": "วันที่"},
-        markers=True
-    )
+avg_aqi = aqi_line_data.groupby("date")[["aqius"]].mean().reset_index()
+fig_line = px.line(
+    avg_aqi,
+    x="date",
+    y="aqius",
+    title=f"AQI (US) เฉลี่ยรายสัปดาห์ — {chart_location} ({selected_week_label})",
+    labels={"aqius": "ค่า AQI (US)", "date": "วันที่"},
+    markers=True
+)
+avg_temp = temp_line_data.groupby("date")[["temperature"]].mean().reset_index()
+fig_temp = px.line(
+    avg_temp,
+    x="date",
+    y="temperature",
+    title=f"อุณหภูมิ (°C) เฉลี่ยรายสัปดาห์ — {chart_location} ({selected_week_label})",
+    labels={"temperature": "อุณหภูมิ (°C)", "date": "วันที่"},
+    markers=True
+)
+avg_humid = humid_line_data.groupby("date")[["humidity"]].mean().reset_index()
+fig_humid = px.line(
+    avg_humid,
+    x="date",
+    y="humidity",
+    title=f"ความชื้น (%) เฉลี่ยรายสัปดาห์ — {chart_location} ({selected_week_label})",
+    labels={"humidity": "ความชื้น (%)", "date": "วันที่"},
+    markers=True
+)
 
 
 # ✅ ปรับ layout เพิ่มเติม (optional)

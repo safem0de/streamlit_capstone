@@ -112,122 +112,34 @@ humid_line_data = filtered_hourly[["datetime", "city", "humidity"]].sort_values(
 # ✅ ตัวช่วยชื่อสถานที่
 chart_location = get_chart_location_label(selected_region, selected_state, selected_city)
 
-# ✅ กรณี 1: เลือกเมือง
-if selected_city != "ทั้งหมด" and selected_city != "โปรดเลือกจังหวัดก่อน":
-    fig_line = px.line(
-        aqi_line_data,
-        x="datetime",
-        y="aqius",
-        title=f"AQI (US) รายชั่วโมง — {chart_location} ({selected_date.strftime('%d %b %Y')})",
-        labels={"aqius": "ค่า AQI (US)", "datetime": "เวลา"},
-        markers=True
-    )
-    fig_temp = px.line(
-        temp_line_data,
-        x="datetime",
-        y="temperature",
-        title=f"อุณหภูมิ (°C) รายชั่วโมง — {chart_location} ({selected_date.strftime('%d %b %Y')})",
-        labels={"temperature": "อุณหภูมิ (°C)", "datetime": "เวลา"},
-        markers=True
-    )
-    fig_humid = px.line(
-        humid_line_data,
-        x="datetime",
-        y="humidity",
-        title=f"ความชื้น (%) รายชั่วโมง — {chart_location} ({selected_date.strftime('%d %b %Y')})",
-        labels={"humidity": "ความชื้น (%)", "datetime": "เวลา"},
-        markers=True
-    )
 
-# ✅ กรณี 2: เลือกจังหวัด
-elif selected_state != "ทั้งหมด" and selected_state != "โปรดเลือกภูมิภาคก่อน":
-    avg_hourly = aqi_line_data.groupby("datetime")[["aqius"]].mean().reset_index()
-    fig_line = px.line(
-        avg_hourly,
-        x="datetime",
-        y="aqius",
-        title=f"AQI (US) เฉลี่ยรายชั่วโมง — {chart_location} ({selected_date.strftime('%d %b %Y')})",
-        labels={"aqius": "ค่า AQI (US)", "datetime": "เวลา"},
-        markers=True
-    )
-    avg_temp = temp_line_data.groupby("datetime")[["temperature"]].mean().reset_index()
-    fig_temp = px.line(
-        avg_temp,
-        x="datetime",
-        y="temperature",
-        title=f"อุณหภูมิ (°C) เฉลี่ยรายชั่วโมง — {chart_location} ({selected_date.strftime('%d %b %Y')})",
-        labels={"temperature": "อุณหภูมิ (°C)", "datetime": "เวลา"},
-        markers=True
-    )
-    avg_humid = humid_line_data.groupby("datetime")[["humidity"]].mean().reset_index()
-    fig_humid = px.line(
-        avg_humid,
-        x="datetime",
-        y="humidity",
-        title=f"ความชื้น (%) เฉลี่ยรายชั่วโมง — {chart_location} ({selected_date.strftime('%d %b %Y')})",
-        labels={"humidity": "ความชื้น (%)", "datetime": "เวลา"},
-        markers=True
-    )
-
-# ✅ กรณี 3: เลือกภูมิภาค
-elif selected_region != "ทั้งหมด":
-    avg_hourly = aqi_line_data.groupby("datetime")[["aqius"]].mean().reset_index()
-    fig_line = px.line(
-        avg_hourly,
-        x="datetime",
-        y="aqius",
-        title=f"AQI (US) เฉลี่ยรายชั่วโมง — {chart_location} ({selected_date.strftime('%d %b %Y')})",
-        labels={"aqius": "ค่า AQI (US)", "datetime": "เวลา"},
-        markers=True
-    )
-    avg_temp = temp_line_data.groupby("datetime")[["temperature"]].mean().reset_index()
-    fig_temp = px.line(
-        avg_temp,
-        x="datetime",
-        y="temperature",
-        title=f"อุณหภูมิ (°C) เฉลี่ยรายชั่วโมง — {chart_location} ({selected_date.strftime('%d %b %Y')})",
-        labels={"temperature": "อุณหภูมิ (°C)", "datetime": "เวลา"},
-        markers=True
-    )
-    avg_humid = humid_line_data.groupby("datetime")[["humidity"]].mean().reset_index()
-    fig_humid = px.line(
-        avg_humid,
-        x="datetime",
-        y="humidity",
-        title=f"ความชื้น (%) เฉลี่ยรายชั่วโมง — {chart_location} ({selected_date.strftime('%d %b %Y')})",
-        labels={"humidity": "ความชื้น (%)", "datetime": "เวลา"},
-        markers=True
-    )
-
-# ✅ กรณี 4: ไม่เลือกอะไรเลย (ทั่วประเทศ)
-else:
-    avg_hourly = aqi_line_data.groupby("datetime")[["aqius"]].mean().reset_index()
-    fig_line = px.line(
-        avg_hourly,
-        x="datetime",
-        y="aqius",
-        title=f"AQI (US) เฉลี่ยรายชั่วโมง — {chart_location} ({selected_date.strftime('%d %b %Y')})",
-        labels={"aqius": "ค่า AQI (US)", "datetime": "เวลา"},
-        markers=True
-    )
-    avg_temp = temp_line_data.groupby("datetime")[["temperature"]].mean().reset_index()
-    fig_temp = px.line(
-        avg_temp,
-        x="datetime",
-        y="temperature",
-        title=f"อุณหภูมิ (°C) เฉลี่ยรายชั่วโมง — {chart_location} ({selected_date.strftime('%d %b %Y')})",
-        labels={"temperature": "อุณหภูมิ (°C)", "datetime": "เวลา"},
-        markers=True
-    )
-    avg_humid = humid_line_data.groupby("datetime")[["humidity"]].mean().reset_index()
-    fig_humid = px.line(
-        avg_humid,
-        x="datetime",
-        y="humidity",
-        title=f"ความชื้น (%) เฉลี่ยรายชั่วโมง — {chart_location} ({selected_date.strftime('%d %b %Y')})",
-        labels={"humidity": "ความชื้น (%)", "datetime": "เวลา"},
-        markers=True
-    )
+avg_hourly = aqi_line_data.groupby("datetime")[["aqius"]].mean().reset_index()
+fig_line = px.line(
+    avg_hourly,
+    x="datetime",
+    y="aqius",
+    title=f"AQI (US) เฉลี่ยรายชั่วโมง — {chart_location} ({selected_date.strftime('%d %b %Y')})",
+    labels={"aqius": "ค่า AQI (US)", "datetime": "เวลา"},
+    markers=True
+)
+avg_temp = temp_line_data.groupby("datetime")[["temperature"]].mean().reset_index()
+fig_temp = px.line(
+    avg_temp,
+    x="datetime",
+    y="temperature",
+    title=f"อุณหภูมิ (°C) เฉลี่ยรายชั่วโมง — {chart_location} ({selected_date.strftime('%d %b %Y')})",
+    labels={"temperature": "อุณหภูมิ (°C)", "datetime": "เวลา"},
+    markers=True
+)
+avg_humid = humid_line_data.groupby("datetime")[["humidity"]].mean().reset_index()
+fig_humid = px.line(
+    avg_humid,
+    x="datetime",
+    y="humidity",
+    title=f"ความชื้น (%) เฉลี่ยรายชั่วโมง — {chart_location} ({selected_date.strftime('%d %b %Y')})",
+    labels={"humidity": "ความชื้น (%)", "datetime": "เวลา"},
+    markers=True
+)
 
 
 # ✅ ปรับ layout
