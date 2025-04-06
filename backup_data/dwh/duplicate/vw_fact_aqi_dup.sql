@@ -11,4 +11,3 @@ UNION ALL
            FROM fact_air_quality
           GROUP BY fact_air_quality.time_id, fact_air_quality.location_id
          HAVING count(*) > 1) duplicate_counts;
-) AS duplicate_counts;

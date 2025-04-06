@@ -125,7 +125,7 @@ nerdctl run -it --rm -p 8501:8501 my-streamlit-app
 
 production
 ```bash
-nerdctl build -t 43.209.49.162:32000/streamlit:latest .
+nerdctl build --no-cache -t 43.209.49.162:32000/streamlit:latest .
 nerdctl build --no-cache -t streamlit:latest .
 #
 nerdctl images
